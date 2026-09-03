@@ -25,6 +25,22 @@ public:
         this->Servicio = Servicio;
     }
 
+	string getID() {
+		return this->ID;
+	}
+
+	string getNombre() {
+		return this->Nombre;
+	}
+
+	int getEdad() {
+		return this->Edad;
+	}
+
+    string getServicio() {
+        return this->Servicio;
+    }
+
     ~Paciente() {
     }
 };
