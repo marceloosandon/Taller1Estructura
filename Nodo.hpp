@@ -4,17 +4,28 @@
 class Nodo {
 private:
     Paciente p;
-    Nodo* N;
+    Nodo* N1;
 public:
-    Nodo();
     Nodo(Paciente p);
 
     Nodo* ObtenerPacienteSiguiente();
-    void registrarPaciente(Paciente p);
+    Nodo* registrarPaciente(Paciente p);
 
-    void SetNodo(Nodo* n);
+    void SetNodoSiguiente(Nodo* N1);
+
+    int obtenerSize(Nodo* n);
+
+    bool estaVacio();
+
+	void InsertarPacienteIndice(Paciente p, int indice);
+
+    Paciente verPacienteIndice(int indice);
+
+	void vaciarLista();
+
     Paciente verPaciente();
 
-    ~Nodo() {
-    }
+	Nodo* eliminarPacienteIndice(Nodo* n, int indice);
+
+    ~Nodo() {}
 };

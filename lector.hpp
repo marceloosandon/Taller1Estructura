@@ -36,12 +36,54 @@ public:
                 actual = nuevoNodo;
             }
             else {
-                actual->SetNodo(nuevoNodo);
+                actual->SetNodoSiguiente(nuevoNodo);
                 actual = nuevoNodo;
             }
         }
 
         archivo.close();
         return cabeza;
+    }
+    Nodo* eliminarPaciente(string nombre, Nodo* n, Paciente p) {
+        while (n != nullptr) {
+            if (n->verPaciente().getNombre() == nombre) {
+				n->ObtenerPacienteSiguiente()->SetNodoSiguiente(nullptr);
+            }
+            n = n->ObtenerPacienteSiguiente();
+        }
+        return n;
+    }
+    void menu(Nodo* normal) {
+        int Cantidad;
+        bool Terminar = false;
+        while (Terminar == false) {
+            cout << " Indique la cantidad de pacientes a atender ";
+            cin >> Cantidad;
+            if (Cantidad >= 1) {
+				for (int i = 0; i < Cantidad; i++) {
+                    if (i == 0) {
+                        cout << " === ATENDIENDO PACIENTES === " << endl;
+                    }
+					if (normal != nullptr) {
+						Paciente p = normal->verPaciente();
+						cout << "ID: " << p.getID() << endl;
+                        cout << "Nombre: " << p.getNombre() << endl;
+                        cout << "Edad: " << p.getEdad() << endl;
+						cout << "Servicio: " << p.getServicio() << endl;
+                        cout << "" << endl;
+                        normal = normal->eliminarPacienteIndice(normal, i);
+                        normal->ObtenerPacienteSiguiente();
+					}
+					else {
+						cout << "No hay más pacientes en espera." << endl;
+						break;
+					}
+				}
+                break;
+			}
+            else {
+                cout << "Cantidad inválida. Intente nuevamente." << endl;
+            }
+        }
     }
 };

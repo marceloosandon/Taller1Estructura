@@ -9,8 +9,10 @@ int main() {
     bool Terminar = false;
     int opcion;
     lector l;
+	Nodo* pacientes = nullptr;
+    Nodo* personas = nullptr;
+    personas = l.cargar();
     while (Terminar == false) {
-        l.cargar();
         cout << " === HOSPITAL MARMAJA === " << endl;
         cout << "1. Atender Pacientes " << endl;
         cout << "2. Ver Departamento " << endl;
@@ -18,7 +20,8 @@ int main() {
         cout << "4. Salir " << endl;
         cin >> opcion;
         if (opcion == 1) {
-
+            cout << "Pacientes en Espera" << endl;
+			l.menu(personas);
         }
         else if (opcion == 2) {
             //ver departamentos
@@ -28,6 +31,7 @@ int main() {
         }
         else if (opcion == 4) {
             Terminar = true;
+			cout << "Hasta luego :D." << endl;
             break;
         }
     }

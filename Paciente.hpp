@@ -9,7 +9,6 @@ private:
     string Nombre;
     int Edad;
     string Servicio;
-
 public:
     Paciente() {
         this->ID = "";
@@ -41,6 +40,5 @@ public:
         return this->Servicio;
     }
 
-    ~Paciente() {
-    }
+    ~Paciente() {}
 };
