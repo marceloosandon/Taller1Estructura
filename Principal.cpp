@@ -8,10 +8,13 @@ using namespace std;
 int main() {
     bool Terminar = false;
     int opcion;
+    int contador = 0;
     lector l;
 	Nodo* pacientes = nullptr;
-    Nodo* personas = nullptr;
-    personas = l.cargar();
+    Nodo* personas = l.cargar();
+    Nodo* aux = personas;
+    Nodo* respaldo = aux;
+    int contadorCiclo = 0;
     while (Terminar == false) {
         cout << " === HOSPITAL MARMAJA === " << endl;
         cout << "1. Atender Pacientes " << endl;
@@ -20,8 +23,33 @@ int main() {
         cout << "4. Salir " << endl;
         cin >> opcion;
         if (opcion == 1) {
-            cout << "Pacientes en Espera" << endl;
-			l.menu(personas);
+            int Cantidad = 0;
+            cout << " === PACIENTES EN ESPERA === " << endl;
+            while (respaldo != nullptr) {
+                Paciente pe = respaldo->verPaciente();
+                contador = contador + 1;
+                cout << contador << ". " << pe.getID() << " - " << pe.getNombre() << endl;
+                respaldo = respaldo->ObtenerPacienteSiguiente();
+            }
+            cout << " Indique la cantidad de pacientes a atender ";
+            cin >> Cantidad;
+			aux = l.menu(aux, Cantidad);
+            contador = l.contar(Cantidad);
+            respaldo = aux;
+            if (pacientes == nullptr) {
+                pacientes = aux;
+            }
+            else {
+                while (aux != nullptr) {
+                    if (contadorCiclo < contador) {
+                        pacientes->SetNodoSiguiente(aux);
+                        aux = aux->ObtenerPacienteSiguiente();
+                    }
+                    else {
+                        break;
+                    }
+                }
+            }
         }
         else if (opcion == 2) {
             //ver departamentos

@@ -84,20 +84,40 @@ Nodo* Nodo::eliminarPacienteIndice(Nodo* n, int indice) {
 		delete n;
 		return siguiente;
 	}
-
 	Nodo* actual = n;
 	Nodo* anterior = nullptr;
-
 	for (int i = 0; i < indice && actual != nullptr; i++) {
 		anterior = actual;
 		actual = actual->ObtenerPacienteSiguiente();
 	}
-
 	if (actual != nullptr) {
 		anterior->SetNodoSiguiente(actual->ObtenerPacienteSiguiente());
 		delete actual;
 	}
-
 	return n;
 }
+Nodo* Nodo::eliminarPacientePrimero(Nodo* n) {
+	if (!estaVacio()) {
+		Nodo* siguiente = n->ObtenerPacienteSiguiente();
+		delete n;
+		return siguiente;
+	}
+	else {
+		return nullptr;
+	}
+}
 
+Nodo* Nodo::InsertarPacienteFinal(Paciente pa) {
+	if (!estaVacio()) {
+		Nodo* aux = this->N1;
+		while (aux != nullptr) {
+			aux = aux->ObtenerPacienteSiguiente();
+		}
+		aux = new Nodo(pa);
+		return aux;
+	}
+	else {
+		this->p = pa;
+	}
+	return nullptr;
+}

@@ -19,6 +19,8 @@ public:
 
 	void InsertarPacienteIndice(Paciente p, int indice);
 
+    Nodo* InsertarPacienteFinal(Paciente p);
+
     Paciente verPacienteIndice(int indice);
 
 	void vaciarLista();
@@ -26,6 +28,8 @@ public:
     Paciente verPaciente();
 
 	Nodo* eliminarPacienteIndice(Nodo* n, int indice);
+
+    Nodo* eliminarPacientePrimero(Nodo* n);
 
     ~Nodo() {}
 };

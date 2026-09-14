@@ -1,5 +1,6 @@
 #include "Paciente.hpp"
 #include "Nodo.hpp"
+#include "Lector.cpp"
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
@@ -53,37 +54,40 @@ public:
         }
         return n;
     }
-    void menu(Nodo* normal) {
-        int Cantidad;
+    Nodo* menu(Nodo* normal, int cantidad) {
         bool Terminar = false;
-        while (Terminar == false) {
-            cout << " Indique la cantidad de pacientes a atender ";
-            cin >> Cantidad;
-            if (Cantidad >= 1) {
-				for (int i = 0; i < Cantidad; i++) {
-                    if (i == 0) {
-                        cout << " === ATENDIENDO PACIENTES === " << endl;
-                    }
-					if (normal != nullptr) {
-						Paciente p = normal->verPaciente();
-						cout << "ID: " << p.getID() << endl;
-                        cout << "Nombre: " << p.getNombre() << endl;
-                        cout << "Edad: " << p.getEdad() << endl;
-						cout << "Servicio: " << p.getServicio() << endl;
-                        cout << "" << endl;
-                        normal = normal->eliminarPacienteIndice(normal, i);
-                        normal->ObtenerPacienteSiguiente();
-					}
-					else {
-						cout << "No hay más pacientes en espera." << endl;
-						break;
-					}
+        int contador = 0;
+        Nodo* aux = normal;
+        if (cantidad >= 1) {
+			for (int i = 1; i < cantidad+1; i++) {
+                if (i == 0) {
+                    cout << " === ATENDIENDO PACIENTES === " << endl;
+                }
+				if (normal != nullptr) {
+					Paciente p = normal->verPaciente();
+					cout << "ID: " << p.getID() << endl;
+                    cout << "Nombre: " << p.getNombre() << endl;
+                    cout << "Edad: " << p.getEdad() << endl;
+					cout << "Servicio: " << p.getServicio() << endl;
+                    cout << "" << endl;
+                    normal = normal->eliminarPacientePrimero(normal);
 				}
-                break;
+				if (normal == nullptr) {
+					cout << "No hay más pacientes en espera." << endl;
+					return normal;
+				}
 			}
-            else {
-                cout << "Cantidad inválida. Intente nuevamente." << endl;
-            }
+            contar(cantidad);
+            return normal;
+		}
+        else {
+            cout << "Cantidad inválida. Intente nuevamente." << endl;
+            return nullptr;
         }
+        contar(cantidad);
+        return aux;
+    }
+    int contar(int numero) {
+        return numero;
     }
 };
