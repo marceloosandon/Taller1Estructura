@@ -108,16 +108,11 @@ Nodo* Nodo::eliminarPacientePrimero(Nodo* n) {
 }
 
 Nodo* Nodo::InsertarPacienteFinal(Paciente pa) {
-	if (!estaVacio()) {
-		Nodo* aux = this->N1;
-		while (aux != nullptr) {
-			aux = aux->ObtenerPacienteSiguiente();
-		}
-		aux = new Nodo(pa);
-		return aux;
+	Nodo* aux = this;
+	while (aux->ObtenerPacienteSiguiente() != nullptr) {
+		aux = aux->ObtenerPacienteSiguiente();
 	}
-	else {
-		this->p = pa;
-	}
-	return nullptr;
+	Nodo* nuevo = new Nodo(pa);
+	aux->SetNodoSiguiente(nuevo);
+	return nuevo;
 }
