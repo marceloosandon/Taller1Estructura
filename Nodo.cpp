@@ -1,7 +1,13 @@
+#include "Departamento.hpp"
 #include "Nodo.hpp"
 
 Nodo::Nodo(Paciente p) {
     this->p = p;
+	this->N1 = nullptr;
+}
+
+Nodo::Nodo(Departamento d) {
+	this->d = d;
 	this->N1 = nullptr;
 }
 
@@ -20,6 +26,10 @@ void Nodo::SetNodoSiguiente(Nodo* N1) {
 
 Paciente Nodo::verPaciente() {
     return this->p;
+}
+
+Departamento Nodo::verDepartamento() {
+	return this->d;
 }
 
 int Nodo::obtenerSize(Nodo* n) {

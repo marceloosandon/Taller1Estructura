@@ -1,11 +1,14 @@
 #pragma once
 #include "Paciente.hpp"
+#include "Departamento.hpp"
 
 class Nodo {
 private:
     Paciente p;
+    Departamento d;
     Nodo* N1;
 public:
+    Nodo(Departamento d);
     Nodo(Paciente p);
 
     Nodo* ObtenerPacienteSiguiente();
@@ -26,6 +29,8 @@ public:
 	void vaciarLista();
 
     Paciente verPaciente();
+
+    Departamento verDepartamento();
 
 	Nodo* eliminarPacienteIndice(Nodo* n, int indice);
 

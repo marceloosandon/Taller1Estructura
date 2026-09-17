@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Nodo.hpp"
 #include "Paciente.hpp"
+#include "Departamento.hpp"
 #include "lector.hpp"
 #include <string>
 using namespace std;
@@ -11,6 +12,7 @@ int main() {
     int contador = 0;
     lector l;
 	Nodo* pacientes = nullptr;
+    Nodo* Departamentos = nullptr;
     Nodo* personas = l.cargar();
     Nodo* aux = personas;
     Nodo* respaldo = aux;
@@ -67,7 +69,17 @@ int main() {
             }
         }
         else if (opcion == 2) {
-            //ver departamentos
+            contador = 0;
+            Departamentos = l.cargarDepartamento();
+            if (Departamentos->obtenerSize(Departamentos) > 0) {
+                cout << " === DEPARTAMENTOS/SERVICIOS === " << endl;
+                while (Departamentos != nullptr) {
+                    Departamento r = Departamentos->verDepartamento();
+                    contador++;
+                    cout << contador << ". " << r.getTipo() << endl;
+                    Departamentos = Departamentos->ObtenerPacienteSiguiente();
+                }
+            }
         }
         else if (opcion == 3) {
             //historial

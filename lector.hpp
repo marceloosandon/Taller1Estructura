@@ -1,5 +1,6 @@
 #include "Paciente.hpp"
 #include "Nodo.hpp"
+#include "Departamento.hpp"
 #include "Lector.cpp"
 #include <iostream>
 #include <fstream>
@@ -10,6 +11,38 @@ using namespace std;
 
 class lector {
 public:
+    Nodo* cargarDepartamento() {
+        ifstream archivo("pacientes.txt");
+        if (archivo.fail()) {
+            cerr << "No se pudo abrir el archivo." << endl;
+            exit(1);
+        }
+
+        Nodo* cabeza = nullptr;
+        Nodo* actual = nullptr;
+
+        string token0, token1, token2, token3;
+
+        while (getline(archivo, token0, ';') &&
+            getline(archivo, token1, ';') &&
+            getline(archivo, token2, ';') &&
+            getline(archivo, token3, '\n')) {
+
+            Departamento d(token3);
+            Nodo* nuevoNodo = new Nodo(d);
+            if (cabeza == nullptr) {
+                cabeza = nuevoNodo;
+                actual = nuevoNodo;
+            }
+            else {
+                actual->SetNodoSiguiente(nuevoNodo);
+                actual = nuevoNodo;
+            }
+        }
+
+        archivo.close();
+        return cabeza; 
+    }
     Nodo* cargar() {
         ifstream archivo("pacientes.txt");
 		if (archivo.fail()) {
