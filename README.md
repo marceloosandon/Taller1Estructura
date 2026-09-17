@@ -8,4 +8,4 @@ g++ *.cpp -o nombrePrograma.exe
 
 Para 64 bits
 
-g++ -m64 -Os -s *.cpp -o programa_optimizado.exe
+g++ -m64 *.cpp -o mi_programa.exe -O3 -static
