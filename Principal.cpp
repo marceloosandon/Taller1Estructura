@@ -32,6 +32,7 @@ int main() {
         cout << "" << endl;
         cout << "Seleccionar opcion: ";
         cin >> opcion;
+        
         cout << "" << endl;
         if (opcion == 1) {
             contador = 0;
@@ -49,6 +50,9 @@ int main() {
                 cout << "Indique la cantidad de pacientes a atender: ";
                 cin >> Cantidad;
                 cout << "" << endl;
+                if (Cantidad < 0) {
+                    cout << "entrada invalida, intente nuevamente." << endl;
+                }
                 if (Cantidad > 0) {
                     cout << " === ATENDIENDO PACIENTES === " << endl;
                 }
@@ -177,6 +181,9 @@ int main() {
             Terminar = true;
 			cout << "Hasta luego :D." << endl;
             break;
+        }
+        else {
+            cout << "opcion invalida, intente de nuevo." << endl;
         }
     }
     return 0;
