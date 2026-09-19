@@ -32,29 +32,32 @@ int main() {
         cout << "" << endl;
         cout << "Seleccionar opcion: ";
         cin >> opcion;
-        
         cout << "" << endl;
         if (opcion == 1) {
             contador = 0;
             int Cantidad = 0;
-            cout << " === PACIENTES EN ESPERA === " << endl;
             respaldo = aux;
+            if (respaldo != nullptr) {
+                cout << " === PACIENTES EN ESPERA === " << endl;
+            }
+            else {
+                cout << " No hay Pacientes en espera " << endl;
+            }
             while (respaldo != nullptr) {
                 Paciente pe = respaldo->verPaciente();
                 contador++;
                 cout << contador << ". " << pe.getID() << " - " << pe.getNombre() << endl;
                 respaldo = respaldo->ObtenerPacienteSiguiente();
             }
-            cout << "" << endl;
             if (contadorCiclo > 0) {
                 cout << "Indique la cantidad de pacientes a atender: ";
                 cin >> Cantidad;
                 cout << "" << endl;
-                if (Cantidad < 0) {
-                    cout << "entrada invalida, intente nuevamente." << endl;
-                }
                 if (Cantidad > 0) {
                     cout << " === ATENDIENDO PACIENTES === " << endl;
+                }
+                else {
+                    cout << "Cantidad Invalida" << endl;
                 }
             }
             if (Cantidad > 0 && contadorCiclo > 0) {
@@ -94,9 +97,12 @@ int main() {
                     cout << " === DEPARTAMENTOS/SERVICIOS === " << endl;
                     cout << "" << endl;
                     while (Departamentos != nullptr) {
-                        Departamento r = Departamentos->verDepartamento();
-                        contador++;
-                        cout << contador << ". " << r.getTipo() << endl;
+                        string tipod = Departamentos->verDepartamento().getTipo();
+                        if (tipod == "Cardiologia" || tipod == "Urgencias" || tipod == "Cirugia" || tipod == "Pediatria" || tipod == "Traumatologia" || tipod == "Neurologia" || tipod == "Medicina General" || tipod == "Hospitalizacion") {
+                            Departamento r = Departamentos->verDepartamento();
+                            contador++;
+                            cout << contador << ". " << r.getTipo() << endl;
+                        }
                         Departamentos = Departamentos->ObtenerPacienteSiguiente();
                     }
                 }
@@ -181,9 +187,6 @@ int main() {
             Terminar = true;
 			cout << "Hasta luego :D." << endl;
             break;
-        }
-        else {
-            cout << "opcion invalida, intente de nuevo." << endl;
         }
     }
     return 0;
