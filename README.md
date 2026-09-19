@@ -1,11 +1,12 @@
 # Taller1Estructura
 Taller N°1 Estructura De Datos
 
-Para Crear el exe, necesitas este comando
+Instruccion para compilar en el codespace:
 
-Para 32 bits
-g++ *.cpp -o nombrePrograma.exe
+Para Crear el exe, necesitas este comando en la terminal (se compila en linux, no correr ni descargar en windows)
 
-Para 64 bits
+g++ *.cpp -o nombrePrograma
 
-g++ -m64 *.cpp -o mi_programa.exe -O3 -static
+y luego de compilar ejecutar el comando para ejecutar el programa o archivo binario de linux
+
+./nombrePrograma
