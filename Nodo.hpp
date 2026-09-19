@@ -24,6 +24,8 @@ public:
 
     Nodo* InsertarPacienteFinal(Paciente p);
 
+    Paciente VerPacienteInverso(Nodo* n, int numeroactual);
+
     Paciente verPacienteIndice(int indice);
 
 	void vaciarLista();

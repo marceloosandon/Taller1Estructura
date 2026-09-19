@@ -126,3 +126,19 @@ Nodo* Nodo::InsertarPacienteFinal(Paciente pa) {
 	aux->SetNodoSiguiente(nuevo);
 	return nuevo;
 }
+
+Paciente Nodo::VerPacienteInverso(Nodo* n, int numeroActual) {
+	Nodo* auxiliar = n;
+	int numero1 = numeroActual;
+	int contador = auxiliar->obtenerSize(auxiliar);
+	while (auxiliar != nullptr) {
+		numero1++;
+		if (numero1 < contador) {
+			auxiliar = auxiliar->ObtenerPacienteSiguiente();
+		}
+		else {
+			break;
+		}
+	}
+	return auxiliar->verPaciente();
+}
