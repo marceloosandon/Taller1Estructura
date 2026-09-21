@@ -53,14 +53,14 @@ int main() {
                 cout << "Indique la cantidad de pacientes a atender: ";
                 cin >> Cantidad;
                 cout << "" << endl;
-                if (Cantidad > 0) {
+                if (Cantidad > 0 && Cantidad <= contadorCiclo) {
                     cout << " === ATENDIENDO PACIENTES === " << endl;
                 }
                 else {
-                    cout << "Cantidad Invalida" << endl;
+                    cout << "Cantidad Invalida de pacientes a ingresar" << endl;
                 }
             }
-            if (Cantidad > 0 && contadorCiclo > 0) {
+            if (Cantidad > 0 && contadorCiclo > 0 && Cantidad <= contadorCiclo) {
                 for (int i = 0; i < Cantidad; i++) {
                     if (aux != nullptr) {
                         Paciente p = aux->verPaciente();
